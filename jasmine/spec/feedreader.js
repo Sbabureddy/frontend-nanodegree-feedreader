@@ -59,9 +59,9 @@ $(function() {
          it('menu changes', function(){
             let menuButton = document.querySelector('a.menu-icon-link');
             menuButton.click();
-            expect(document.body.classList.contains('menu-hidden')).toBe(false);
+            expect(document.body.classList.contains('menu-hidden')).toBeFalsy();
             menuButton.click();
-            expect(document.body.classList.contains('menu-hidden')).toBe(true);
+            expect(document.body.classList.contains('menu-hidden')).toBeTruthy();
             menuButton.click();
         });
     });
@@ -73,7 +73,8 @@ $(function() {
         });
         it('is loadFeed function is called', function(){
             let initialEntries = document.querySelector('div.feed');
-            expect(initialEntries.children.length).not.toBe(0);
+            let ieChildren = initialEntries.querySelectorAll('article.entry')
+            expect(ieChildren.length).not.toBe(0);
         });
     });
     /*  Writed  a new test suite named "New Feed Selection" and 
