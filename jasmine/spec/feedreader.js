@@ -16,7 +16,7 @@ $(function() {
     describe('RSS Feeds', function() {
         //  expiremented with allFeeds variable and app.js to be an empty array 
         it('is all feeds defined', function() {
-            expect(allFeeds).toBeDefined();
+            expect(allFeeds).not.toBeUndefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
@@ -27,9 +27,8 @@ $(function() {
          */
         it('has a URL defined',function(){
             for(let feed of allFeeds){
-                expect(feed.url).toBeDefined();
+                expect(feed.url).toBeTruthy();
                 expect(feed.url.constructor).toBe(String);
-                expect(feed.url.length).not.toBe(0);
             }
         });
 
@@ -39,9 +38,8 @@ $(function() {
          */
         it('name is not empty', function(){
             for(let feed of allFeeds){
-                expect(feed.name).toBeDefined();
+                expect(feed.name).toBeTruthy();
                 expect(feed.name.constructor).toBe(String);
-                expect(feed.name.length).not.toBe(0);
             }
         });
     });
@@ -53,7 +51,7 @@ $(function() {
          *implement this test using classList.contains class of menu-hidden */
         it('is menu hidden by default', function(){
             let isHidden = document.body.classList.contains('menu-hidden');
-            expect(isHidden).toBe(true);
+            expect(isHidden).toBeTruthy();
         });
         //  checked  the menu element has menu.hidden class and togglind on click
          it('menu changes', function(){
@@ -74,7 +72,7 @@ $(function() {
         it('is loadFeed function is called', function(){
             let initialEntries = document.querySelector('div.feed');
             let ieChildren = initialEntries.querySelectorAll('article.entry')
-            expect(ieChildren.length).not.toBe(0);
+            expect(ieChildren.length).not.toEqual(0);
         });
     });
     /*  Writed  a new test suite named "New Feed Selection" and 
